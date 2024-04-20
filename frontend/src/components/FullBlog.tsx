@@ -3,6 +3,9 @@ import { Appbar } from "./Appbar";
 import { Avatar } from "./BlogCard";
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
+    let content = blog.content;
+    content = content.substring(1, content.length - 1);
+
     return (
         <div>
             <Appbar />
@@ -15,7 +18,9 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
                         <div className="text-slate-500">
                             Posted on 2nd Jan 2024
                         </div>
-                        <div className="text-gray-600 mt-5">{blog.content}</div>
+                        <div className="text-gray-600 mt-5"> 
+                            <div dangerouslySetInnerHTML={{ __html: content }} />
+                        </div>
                     </div>
                     <div className="col-span-4 m-10">
                         <div className="text-slate-600 text-md font-medium">

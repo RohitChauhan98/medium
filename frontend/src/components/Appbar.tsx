@@ -9,7 +9,6 @@ import { getName } from "../hooks"
 export const Appbar = () => {
     const [menuVisible, setMenuVisible] = useState(false);
     const  name = getName() || "Anonymous";
-    console.log(name);
     const showMenu = () => {
         setMenuVisible(!menuVisible);
     }
