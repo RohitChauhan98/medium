@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface BlogCardProps {
   authorName: string;
   title: string;
-  key: string;
+  key: number;
   content: string;
   publishedDate: string;
   id: number;
