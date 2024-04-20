@@ -11,6 +11,10 @@ export interface Blog {
     }
 }
 
+// export interface userDetail{
+//     "name": string;
+// }
+
 
 export const useBlog = ({id}: {id: string}) => {
     const [loading, setLoading] = useState(true);
@@ -32,6 +36,24 @@ export const useBlog = ({id}: {id: string}) => {
         loading,
         blog
     }
+}
+
+export const getName = () => {
+    const [name, setName] = useState("");
+    
+    useEffect(() =>{
+        axios.get(`${BACKEND_URL}/api/v1/blog/getUserDetail`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+        .then(response => {
+            setName(response.data.name);
+        })
+    }, [])
+
+    return name
+
 }
 
 export const useBlogs = () => {
@@ -56,3 +78,4 @@ export const useBlogs = () => {
     }
 
 }
+
