@@ -1,10 +1,11 @@
 import { EditorProvider, FloatingMenu, useCurrentEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
+import Italic from '@tiptap/extension-italic'
 
 // define your extension array
 const extensions = [
-    StarterKit, Underline
+    StarterKit, Underline, Italic
 ]
 
 interface contentType {
@@ -14,7 +15,7 @@ interface contentType {
 
 
 
-const MenuBar = ({updateContent}: contentType) => {
+const MenuBar = ({ updateContent }: contentType) => {
     const { editor } = useCurrentEditor()
 
     if (!editor) {
@@ -35,21 +36,27 @@ const MenuBar = ({updateContent}: contentType) => {
                         .toggleBold()
                         .run()
                 }
-                className={`mr-5 ${editor.isActive('bold') ? 'is-active' : ''}`}
+                className={`${editor.isActive('bold') ? 'is-active' : ''}  border-2 rounded-md px-1 m-1`}
             >
                 bold
             </button>
             <button
                 onClick={() => editor.commands.clearContent()}
-                className={`mr-5  ${editor.isActive('bold') ? 'is-active' : ''}`}
+                className={`${editor.isActive('bold') ? 'is-active' : ''}  border-2 rounded-md px-1 m-1`}
             >
                 clear
             </button>
             <button
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
-                className={`${editor.isActive('underline') ? 'is-active' : ''} mr-5`}
+                className={`${editor.isActive('underline') ? 'is-active' : ''}  border-2 rounded-md px-1 m-1`}
             >
                 Underline
+            </button>
+            <button
+                onClick={() => editor.chain().focus().toggleItalic().run()}
+                className={`${editor.isActive('italic') ? 'is-active' : ''} border-2 rounded-md px-1 m-1`}
+            >
+                Italic
             </button>
         </div>
     );
@@ -57,12 +64,11 @@ const MenuBar = ({updateContent}: contentType) => {
 
 
 
-const Tiptap = ({updateContent}: contentType) => {
-    const initailTxt = '<p>Hello World!</p>'
+const Tiptap = ({ updateContent }: contentType) => {
+    const initailTxt = '<p>Write something here...</p>'
     return (
-        <EditorProvider slotBefore={<MenuBar updateContent={updateContent}/>}  extensions={extensions} content={initailTxt}>
+        <EditorProvider slotBefore={<MenuBar updateContent={updateContent} />} extensions={extensions} content={initailTxt}>
             <FloatingMenu> </FloatingMenu>
-            {/* <BubbleMenu>This is the bubble menu</BubbleMenu> */}
         </EditorProvider>
     )
 }

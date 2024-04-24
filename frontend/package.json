@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@rc56951/medium-common": "^1.0.0",
+    "@tiptap/extension-color": "^2.3.0",
+    "@tiptap/extension-italic": "^2.3.0",
+    "@tiptap/extension-text-style": "^2.3.0",
     "@tiptap/extension-underline": "^2.3.0",
     "@tiptap/pm": "^2.3.0",
     "@tiptap/react": "^2.3.0",
