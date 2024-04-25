@@ -13,8 +13,6 @@ interface contentType {
 }
 
 
-
-
 const MenuBar = ({ updateContent }: contentType) => {
     const { editor } = useCurrentEditor()
 
@@ -26,7 +24,7 @@ const MenuBar = ({ updateContent }: contentType) => {
     updateContent(temp);
 
     return (
-        <div className='flex'>
+        <div className='flex bg-gray-600 text-white'>
             <button
                 onClick={() => editor.chain().focus().toggleBold().run()}
                 disabled={
@@ -36,7 +34,7 @@ const MenuBar = ({ updateContent }: contentType) => {
                         .toggleBold()
                         .run()
                 }
-                className={`${editor.isActive('bold') ? 'is-active' : ''}  border-2 rounded-md px-1 m-1`}
+                className={`${editor.isActive('bold') ? 'is-active' : ''}  border-2 rounded-md px-1 m-1 `}
             >
                 bold
             </button>
@@ -68,7 +66,7 @@ const Tiptap = ({ updateContent }: contentType) => {
     const initailTxt = '<p>Write something here...</p>'
     return (
         <EditorProvider slotBefore={<MenuBar updateContent={updateContent} />} extensions={extensions} content={initailTxt}>
-            <FloatingMenu> </FloatingMenu>
+            <FloatingMenu > </FloatingMenu>
         </EditorProvider>
     )
 }

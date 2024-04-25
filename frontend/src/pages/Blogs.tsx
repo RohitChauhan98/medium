@@ -1,5 +1,6 @@
 import { Appbar } from "../components/Appbar";
 import { BlogCard } from "../components/BlogCard";
+import { BlogCardSkeleton } from "../components/BlogCardSkeleton";
 import { useBlogs } from "../hooks";
 
 export const Blogs = () => {
@@ -8,8 +9,8 @@ export const Blogs = () => {
   if (loading) {
     return (
       <div>
-        loading..
-        {/* build skeletons */}
+        <Appbar />
+       <BlogCardSkeleton />
       </div>
     );
   }
